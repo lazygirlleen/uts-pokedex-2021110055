@@ -16,8 +16,8 @@ class PokemonController extends Controller
     public function index()
     {
         $options = ['Grass', 'Fire', 'Water', 'Bug', 'Normal', 'Poison', 'Electric', 'Ground', 'Fairy', 'Psychic', 'Rock', 'Ghost', 'Ice', 'Dragon', 'Dark', 'Steel', 'Flying'];
-        $pokemon = Pokemon::paginate(20);
-        return view('pokemon.index', compact('pokemon'));
+        $pokemons = Pokemon::paginate(20);
+        return view('pokemon.index', compact('pokemons'));
     }
 
     /**
@@ -97,7 +97,7 @@ class PokemonController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'species' => 'required|string|max:100',
-            'primary_type' => 'required|string|in:' . implode(',', $options),
+            'primary_type' => 'required|string|in:' . implode($options),
             'weight' => 'decimal|max:8|decimal(2)|default(0)',
             'height' => 'decimal|max:8|decimal(2)|default(0)',
             'hp' => 'integer|max:4|default(0)',
