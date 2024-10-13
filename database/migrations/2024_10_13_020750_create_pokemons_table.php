@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pokemon', function (Blueprint $table) {
+        Schema::create('pokemons', function (Blueprint $table) {
                 $table->string('name');
                 $table->string('species');
                 $table->string('primary_type');
-                $table->decimal('weight');
-                $table->integer('height');
-                $table->integer('hp');
-                $table->integer('attack');
-                $table->integer('defense');
-                $table->boolean('is_legendary');
-                $table->image('photo');
+                $table->decimal('weight', 8, 2)->default(0);
+                $table->decimal('height', 8, 2)->default(0);
+                $table->integer('hp')->default(0);
+                $table->integer('attack')->default(0);
+                $table->integer('defense')->default(0);
+                $table->boolean('is_legendary')->default(false);
+                $table->string('photo')->nullable();
         });
     }
 
