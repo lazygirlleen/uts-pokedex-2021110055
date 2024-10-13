@@ -21,7 +21,6 @@ class Pokemon extends Model
         'is_legendary',
         'photo'
     ];
-
     protected $append = [
         'photo_url',
     ];
@@ -33,4 +32,5 @@ class Pokemon extends Model
         }
         return $this->photo ? Storage::url($this->photo) : null;
     }
+
 }
