@@ -37,7 +37,7 @@
 
     </table>
     <div class="d-flex justify-content-center">
-        {!! $guests->links() !!}
+        {!! $pokemon->links() !!}
     </div>
 </div>
 @endsection

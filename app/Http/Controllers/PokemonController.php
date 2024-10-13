@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Storage;
 
 class PokemonController extends Controller
 {
-    public function __construct()
-     {
-        $this->middleware('auth')->except('index'); //seluruh fungsi hrs melewati auth kecuali index
-    }
+    // public function __construct()
+    //  {
+    //     $this->middleware('auth')->except('index'); //seluruh fungsi hrs melewati auth kecuali index
+    // }
 
     public function index()
     {
-        // $guests = Guest::all();
-        $guests = Pokemon::paginate(20);
+        $options = ['Grass', 'Fire', 'Water', 'Bug', 'Normal', 'Poison', 'Electric', 'Ground', 'Fairy', 'Psychic', 'Rock', 'Ghost', 'Ice', 'Dragon', 'Dark', 'Steel', 'Flying'];
+        $pokemon = Pokemon::paginate(20);
         return view('pokemon.index', compact('pokemon'));
     }
 
@@ -25,7 +25,8 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        return view('pokemon.create');
+        $options = ['Grass', 'Fire', 'Water', 'Bug', 'Normal', 'Poison', 'Electric', 'Ground', 'Fairy', 'Psychic', 'Rock', 'Ghost', 'Ice', 'Dragon', 'Dark', 'Steel', 'Flying'];
+        return view('pokemon.create', compact('options'));
     }
 
     /**
@@ -33,11 +34,11 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        // dump($request->all());
+        $options = ['Grass', 'Fire', 'Water', 'Bug', 'Normal', 'Poison', 'Electric', 'Ground', 'Fairy', 'Psychic', 'Rock', 'Ghost', 'Ice', 'Dragon', 'Dark', 'Steel', 'Flying'];
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'species' => 'required|string|max:100',
-            'primary_type' => 'required|string|max:50',
+            'primary_type' => 'required|string|in:' . implode(',', $options),
             'weight' => 'decimal|max:8|decimal(2)|default(0)',
             'height' => 'decimal|max:8|decimal(2)|default(0)',
             'hp' => 'integer|max:4|default(0)',
@@ -60,14 +61,14 @@ class PokemonController extends Controller
             'primary_type'=> $validated['primary_type'],
             'weight'=> $validated['weight'],
             'height'=> $validated['height'],
-            'hp'=> $validated['hp'],,
+            'hp'=> $validated['hp'],
             'attack'=> $validated['attack'],
-            'defense'=> $validated['defense'],,
+            'defense'=> $validated['defense'],
             'is_legendary'=> $validated['is_legendary'],
             'photo' => $validated['photo'] ?? null
         ]);
 
-        return redirect()->route('ppokemon.index')->with('success', 'Pokemon added succesfully');
+        return redirect()->route('pokemon.index')->with('success', 'Pokemon added succesfully');
     }
 
     /**
@@ -83,7 +84,8 @@ class PokemonController extends Controller
      */
     public function edit(Pokemon $pokemon)
     {
-        return view('pokemon.edit', compact('pokemon'));
+        $options = ['Grass', 'Fire', 'Water', 'Bug', 'Normal', 'Poison', 'Electric', 'Ground', 'Fairy', 'Psychic', 'Rock', 'Ghost', 'Ice', 'Dragon', 'Dark', 'Steel', 'Flying'];
+        return view('pokemon.edit', compact('pokemon', 'options'));
     }
 
     /**
@@ -91,10 +93,11 @@ class PokemonController extends Controller
      */
     public function update(Request $request, Pokemon $pokemon)
     {
+        $options = ['Grass', 'Fire', 'Water', 'Bug', 'Normal', 'Poison', 'Electric', 'Ground', 'Fairy', 'Psychic', 'Rock', 'Ghost', 'Ice', 'Dragon', 'Dark', 'Steel', 'Flying'];
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'species' => 'required|string|max:100',
-            'primary_type' => 'required|string|max:50',
+            'primary_type' => 'required|string|in:' . implode(',', $options),
             'weight' => 'decimal|max:8|decimal(2)|default(0)',
             'height' => 'decimal|max:8|decimal(2)|default(0)',
             'hp' => 'integer|max:4|default(0)',
@@ -123,9 +126,9 @@ class PokemonController extends Controller
             'primary_type'=> $validated['primary_type'],
             'weight'=> $validated['weight'],
             'height'=> $validated['height'],
-            'hp'=> $validated['hp'],,
+            'hp'=> $validated['hp'],
             'attack'=> $validated['attack'],
-            'defense'=> $validated['defense'],,
+            'defense'=> $validated['defense'],
             'is_legendary'=> $validated['is_legendary'],
             'photo' => $validated['photo'] ?? $pokemon->photo
         ]);
