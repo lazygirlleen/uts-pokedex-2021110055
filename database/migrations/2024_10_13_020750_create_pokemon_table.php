@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pokemon', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+                $table->string('name');
+                $table->string('species');
+                $table->string('primary_type');
+                $table->decimal('weight');
+                $table->integer('height');
+                $table->integer('hp');
+                $table->integer('attack');
+                $table->integer('defense');
+                $table->boolean('is_legendary');
+                $table->image('photo');
         });
     }
 
