@@ -34,7 +34,7 @@
         <tbody>
             @forelse ($pokemons as $pokemon)
             <tr>
-                <th scope="row">{{ $pokemon->id }}</th>
+            <th scope="row">{{ '#' . Str::padLeft($pokemon->id, 4, '0') }}</th>
                 <td>
                     <a href="{{ route('pokemon.show', $pokemon) }}">
                         {{ $pokemon->name }}
