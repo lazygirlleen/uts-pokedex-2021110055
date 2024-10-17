@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Pokemon List')
+@section('title', 'Daftar Pokemon')
 
 @section('content')
 <div class="mt-4 p-5 bg-black text-white rounded">
-    <h1>All Pokemon</h1>
+    <h1>All Guests</h1>
 
     <a href="{{ route('pokemon.create') }}" class="btn btn-primary btn-sm">
         Create New Pokemon
@@ -23,51 +23,21 @@
     <table class="table table-bordered mb-5">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Species</th>
-                <th scope="col">Primary Type</th>
-                <th scope="col">Power</th>
-                <th scope="col">Action</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
-        <tbody>
-            @forelse ($pokemons as $pokemon)
-            <tr>
-            <th scope="row">{{ '#' . Str::padLeft($pokemon->id, 4, '0') }}</th>
-                <td>
-                    <a href="{{ route('pokemon.show', $pokemon) }}">
-                        {{ $pokemon->name }}
-                    </a>
-                </td>
-                <td>{{ $pokemon->species }}</td>
-                <td>{{ $pokemon->primary_type }}</td>
-                <td>{{ $pokemon->hp + $pokemon->attack + $pokemon->defense }}</td>
-                <td>
-                    <a href="{{ route('guests.edit', $pokemon) }}" class="btn btn-primary btn-sm">
-                        Edit
-                    </a>
-                    <form action={{ route('guests.destroy', $pokemon) }} method="POST" class="d-inline-block">
-                        @method('DELETE')
-                        @csrf
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
-                        Delete
-                    </button>
-                    </form>
-                </td>
-            </tr>
-            @empty
-            <tr>
-                <td colspan="7">No pokemon found.</td>
-            </tr>
-            @endforelse
-        </tbody>
 
 
     </table>
     <div class="d-flex justify-content-center">
-        {!! $pokemons->links() !!}
+        {!! $guests->links() !!}
     </div>
 </div>
 @endsection
-

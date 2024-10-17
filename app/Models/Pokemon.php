@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class Pokemon extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
 
-    protected $table = 'pokemons';
+    use HasFactory;
     protected $fillable = [
+        'id',
         'name',
         'species',
         'primary_type',
