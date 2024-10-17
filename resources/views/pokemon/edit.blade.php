@@ -22,7 +22,7 @@
 
         <form action="{{ route('pokemon.update', $pokemon) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT') <!-- Assuming you're updating an existing Pokémon -->
+            @method('PUT')
 
             <div class="form-group">
                 <label for="name">Name</label>

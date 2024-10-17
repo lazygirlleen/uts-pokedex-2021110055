@@ -1,53 +1,53 @@
 @extends('layouts.app')
 
-@section('title', "Pokemon: $pokemon->name")
+@section('title', "Pokemon: $p->name")
 
 @section('content')
 
 <div class="card mt-4">
-    @if ($pokemon->photo)
-        <!-- Display the Pokémon photo if it exists -->
-        <img src="{{ asset('storage/' . $pokemon->photo) }}" alt="{{ $pokemon->name }}" class="card-img-top">
+    @if ($p->photo)
+
+        <img src="{{ asset('storage/' . $p->photo) }}" alt="{{ $p->name }}" class="card-img-top">
     @else
-        <!-- Fallback image if no photo is available -->
-        <img src="{{ asset('images/default-pokemon.png') }}" alt="{{ $pokemon->name }}" class="card-img-top">
+
+        <img src="{{ asset('images/default-pokemon.png') }}" alt="{{ $p->name }}" class="card-img-top">
     @endif
 
     <div class="card-body">
-        <h5 class="card-title">{{ $pokemon->name }}</h5>
+        <h5 class="card-title">{{ $p->name }}</h5>
         <table class="table table-bordered">
             <tbody>
                 <tr>
                     <th scope="row">Species</th>
-                    <td>{{ $pokemon->species }}</td>
+                    <td>{{ $p->species }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Primary Type</th>
-                    <td>{{ $pokemon->primary_type }}</td>
+                    <td>{{ $p->primary_type }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Weight</th>
-                    <td>{{ $pokemon->weight }} kg</td>
+                    <td>{{ $p->weight }} kg</td>
                 </tr>
                 <tr>
                     <th scope="row">Height</th>
-                    <td>{{ $pokemon->height }} m</td>
+                    <td>{{ $p->height }} m</td>
                 </tr>
                 <tr>
                     <th scope="row">HP</th>
-                    <td>{{ $pokemon->hp }}</td>
+                    <td>{{ $p->hp }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Attack</th>
-                    <td>{{ $pokemon->attack }}</td>
+                    <td>{{ $p->attack }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Defense</th>
-                    <td>{{ $pokemon->defense }}</td>
+                    <td>{{ $p->defense }}</td>
                 </tr>
                 <tr>
                     <th scope="row">Is Legendary</th>
-                    <td>{{ $pokemon->is_legendary ? 'Yes' : 'No' }}</td>
+                    <td>{{ $p->is_legendary ? 'Yes' : 'No' }}</td>
                 </tr>
             </tbody>
         </table>
