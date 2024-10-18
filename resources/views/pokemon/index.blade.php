@@ -3,15 +3,6 @@
 @section('title', 'Daftar Pokemon')
 
 @section('content')
-
-
-@if (session()->has('success'))
-<div class="alert alert-success mt-4">
-    {{ session()->get('success')  }}
-</div>
-
-@endif
-
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
@@ -72,7 +63,6 @@
                 {{ $pokemon->links() }}
             </div>
         </div>
-
     </div>
 </div>
 @endsection

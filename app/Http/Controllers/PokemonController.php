@@ -34,15 +34,16 @@ class PokemonController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'species' => 'required|string|max:100',
-            'primary_type' => 'string|max:50',
-            'weight' => 'int',
-            'height' => 'int',
-            'hp' => 'int',
-            'attack' => 'int',
-            'defense' => 'int',
-            'is_legendary' => 'boolean'
+                'name' => 'required|string|max:255',
+                'species' => 'required|string|max:100',
+                'primary_type' => 'required|string|max:50',
+                'weight' => 'nullable|numeric|max_digits:8|decimal:2',
+                'height' => 'nullable|numeric|max_digits:8|decimal:2',
+                'hp' => 'nullable|integer|digits_between:0,4',
+                'attack' => 'nullable|integer|digits_between:0,4',
+                'defense' => 'nullable|integer|digits_between:0,4',
+                'is_legendary' => 'required|boolean',
+                'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
 
         ]);
 
@@ -94,13 +95,14 @@ class PokemonController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'species' => 'required|string|max:100',
-            'primary_type' => 'string|max:50',
-            'weight' => 'int',
-            'height' => 'int',
-            'hp' => 'int',
-            'attack' => 'int',
-            'defense' => 'int',
-            'is_legendary' => 'boolean'
+            'primary_type' => 'required|string|max:50',
+            'weight' => 'nullable|numeric|max_digits:8|decimal:2',
+            'height' => 'nullable|numeric|max_digits:8|decimal:2',
+            'hp' => 'nullable|integer|digits_between:0,4',
+            'attack' => 'nullable|integer|digits_between:0,4',
+            'defense' => 'nullable|integer|digits_between:0,4',
+            'is_legendary' => 'required|boolean',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);
 
         if($request->hasFile('photo')){

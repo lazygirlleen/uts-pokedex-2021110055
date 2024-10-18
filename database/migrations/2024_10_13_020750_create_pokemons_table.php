@@ -15,13 +15,13 @@ return new class extends Migration
                 $table->string('name');
                 $table->string('species');
                 $table->string('primary_type');
-                $table->decimal('weight');
+                $table->decimal('weight',);
                 $table->integer('height');
                 $table->integer('hp');
                 $table->integer('attack');
                 $table->integer('defense');
                 $table->boolean('is_legendary');
-                $table->image('photo');
+                $table->string('photo');
         });
     }
 
