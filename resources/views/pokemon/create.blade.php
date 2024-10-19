@@ -86,11 +86,11 @@
             <div class="form-group mt-3">
                 <label for="is_legendary">Is Legendary</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_legendary" id="legendary_yes" value="yes">
+                    <input class="form-check-input" type="radio" name="is_legendary" id="legendary_yes" value="1">
                     <label class="form-check-label" for="legendary_yes">Yes</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_legendary" id="legendary_no" value="no" checked>
+                    <input class="form-check-input" type="radio" name="is_legendary" id="legendary_no" value="0" checked>
                     <label class="form-check-label" for="legendary_no">No</label>
                 </div>
             </div>

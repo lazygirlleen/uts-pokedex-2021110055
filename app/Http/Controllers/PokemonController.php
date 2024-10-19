@@ -19,7 +19,7 @@ class PokemonController extends Controller
 
     public function index()
     {
-        $pokemon = Pokemon::paginate(10);
+        $pokemon = Pokemon::paginate(20);
         return view('pokemon.index', compact('pokemon'));
     }
 
@@ -37,11 +37,11 @@ class PokemonController extends Controller
                 'name' => 'required|string|max:255',
                 'species' => 'required|string|max:100',
                 'primary_type' => 'required|string|max:50',
-                'weight' => 'nullable|numeric|max_digits:8|decimal:2',
-                'height' => 'nullable|numeric|max_digits:8|decimal:2',
-                'hp' => 'nullable|integer|digits_between:0,4',
-                'attack' => 'nullable|integer|digits_between:0,4',
-                'defense' => 'nullable|integer|digits_between:0,4',
+                'weight' => 'numeric',
+                'height' => 'numeric',
+                'hp' => 'integer',
+                'attack' => 'integer',
+                'defense' => 'integer',
                 'is_legendary' => 'required|boolean',
                 'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
 
@@ -96,11 +96,11 @@ class PokemonController extends Controller
             'name' => 'required|string|max:255',
             'species' => 'required|string|max:100',
             'primary_type' => 'required|string|max:50',
-            'weight' => 'nullable|numeric|max_digits:8|decimal:2',
-            'height' => 'nullable|numeric|max_digits:8|decimal:2',
-            'hp' => 'nullable|integer|digits_between:0,4',
-            'attack' => 'nullable|integer|digits_between:0,4',
-            'defense' => 'nullable|integer|digits_between:0,4',
+            'weight' => 'numeric',
+            'height' => 'numeric',
+            'hp' => 'integer',
+            'attack' => 'integer',
+            'defense' => 'integer',
             'is_legendary' => 'required|boolean',
             'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);

@@ -12,7 +12,7 @@ class PokedexController extends Controller
      */
     public function index()
     {
-        $pokemon = Pokemon::paginate(20);
+        $pokemon = Pokemon::paginate(9);
         return view('pokedex', compact('pokemon'));
     }
 }
