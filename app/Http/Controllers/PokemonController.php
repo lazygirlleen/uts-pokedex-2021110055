@@ -14,7 +14,7 @@ class PokemonController extends Controller
 
     public function __construct()
      {
-        $this->middleware('auth')->except('index'); //seluruh fungsi hrs melewati auth kecuali index
+        $this->middleware('auth')->except('index', 'show'); //seluruh fungsi hrs melewati auth kecuali index
     }
 
     public function index()

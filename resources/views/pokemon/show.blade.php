@@ -6,11 +6,7 @@
 
 <div class="card mt-4">
     @if ($pokemon->photo)
-
-        <img src="{{ asset('storage/' . $pokemon->photo) }}" alt="{{ $pokemon->name }}" class="card-img-top">
-    @else
-
-        <img src="{{ asset('images/default-pokemon.png') }}" alt="{{ $pokemon->name }}" class="card-img-top">
+        <img src="{{ $pokemon->photo_url }}" class="rounded img-thumbnail mx-auto d-block my-3"/>
     @endif
 
     <div class="card-body">

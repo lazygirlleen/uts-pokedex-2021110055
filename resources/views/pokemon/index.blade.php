@@ -35,7 +35,7 @@
                 <tr>
                     <th scope="row">{{ '#' . Str::padLeft($p->id, 4, '0') }}</th>
                     <td>
-                        <a href="{{ route('pokemon.show', $p->id) }}"> <!-- Perbaikan di sini -->
+                        <a href="{{ route('pokemon.show', $p->id) }}">
                             {{ $p->name }}
                         </a>
                     </td>
