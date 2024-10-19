@@ -34,6 +34,8 @@ class Pokemon extends Model
             return $this->photo;
         }
         return $this->photo ? Storage::url($this->photo) : null;
+
+        
     }
 
 }

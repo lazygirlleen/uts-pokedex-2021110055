@@ -15,7 +15,7 @@
         @forelse ($pokemon as $p)
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
-                <img src="{{ $p->photo }}" class="rounded img-thumbnail mx-auto d-block my-3" alt="{{ $p->name }}"/>
+                <img src="{{ $p->photo_url }}" class="rounded img-thumbnail mx-auto d-block my-3" alt="{{ $p->name }}"/>
                     <div class="card-body">
 
                         <h5 class="card-title">{{ '#' . Str::padLeft($p->id, 4, '0') }}</h5>

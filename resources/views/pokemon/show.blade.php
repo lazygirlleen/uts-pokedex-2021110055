@@ -7,6 +7,8 @@
 <div class="card mt-4">
     @if ($pokemon->photo)
         <img src="{{ $pokemon->photo_url }}" class="rounded img-thumbnail mx-auto d-block my-3"/>
+    @else
+        <img src="{{ asset('public/' . $pokemon->photo) }}">
     @endif
 
     <div class="card-body">
@@ -27,7 +29,7 @@
                 </tr>
                 <tr>
                     <th scope="row">Height</th>
-                    <td>{{ $pokemon->height }} m</td>
+                    <td>{{ $pokemon->height }} cm</td>
                 </tr>
                 <tr>
                     <th scope="row">HP</th>
